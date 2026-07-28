@@ -1,0 +1,30 @@
+{
+  "client_info": {
+    "business_name": "{{BUSINESS_NAME}}",
+    "domain_url": "{{DOMAIN_URL}}",
+    "logo_url": "{{LOGO_URL}}",
+    "contact": {
+      "address": "{{ADDRESS}}",
+      "phone": "{{PHONE}}",
+      "whatsapp": "{{WHATSAPP}}",
+      "email": "{{EMAIL}}"
+    },
+    "social_profiles": {
+      "facebook": "{{FACEBOOK_URL}}",
+      "instagram": "{{INSTAGRAM_URL}}",
+      "linkedin": "{{LINKEDIN_URL}}",
+      "twitter_x": "{{TWITTER_URL}}",
+      "youtube": "{{YOUTUBE_URL}}"
+    }
+  },
+  "package_contract": {
+    "purchased_tier": "{{PLAN_TIER}}",
+    "contract_duration_months": "{{DURATION_MONTHS}}",
+    "start_date": "{{START_DATE}}"
+  },
+  "existing_infrastructure": {
+    "gsc_status": "{{GSC_STATUS}}",
+    "ga4_status": "{{GA4_STATUS}}",
+    "gbp_status": "{{GBP_STATUS}}"
+  }
+}

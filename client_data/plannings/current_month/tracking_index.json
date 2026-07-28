@@ -1,0 +1,33 @@
+{
+  "campaign_month": "2025-08",
+  "plan_tier": "Plan 2",
+  "overall_status": "Planning",
+  "tasks": [
+    {
+      "task_id": "TASK-001",
+      "title": "Full Technical SEO Audit & Cloud SOC Rank Check",
+      "assigned_to": "technical-audit",
+      "priority": "High",
+      "status": "Pending",
+      "data_locations": {
+        "inputs": "client_data/project_details/client_data_house.json",
+        "output": "artifacts/task_001_result.md"
+      },
+      "delay_reason": null,
+      "due_date": "2025-08-07"
+    },
+    {
+      "task_id": "TASK-002",
+      "title": "GuardPro Product Copy & Schema Setup",
+      "assigned_to": "product-copy",
+      "priority": "High",
+      "status": "Pending",
+      "data_locations": {
+        "inputs": "evals/fixtures/sample_product_page.html",
+        "output": "artifacts/task_002_result.md"
+      },
+      "delay_reason": null,
+      "due_date": "2025-08-14"
+    }
+  ]
+}

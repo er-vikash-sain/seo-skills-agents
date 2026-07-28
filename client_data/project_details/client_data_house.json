@@ -1,0 +1,30 @@
+{
+  "client_info": {
+    "business_name": "Acme Cybersecurity",
+    "domain_url": "https://acmecyber.example.com",
+    "logo_url": "https://acmecyber.example.com/assets/logo.png",
+    "contact": {
+      "address": "100 Tech Plaza, San Francisco, CA 94105",
+      "phone": "+1-555-019-2831",
+      "whatsapp": "+1-555-019-2831",
+      "email": "contact@acmecyber.example.com"
+    },
+    "social_profiles": {
+      "facebook": "https://facebook.com/acmecyber",
+      "instagram": "https://instagram.com/acmecyber",
+      "linkedin": "https://linkedin.com/company/acmecyber",
+      "twitter_x": "https://x.com/acmecyber",
+      "youtube": "https://youtube.com/@acmecyber"
+    }
+  },
+  "package_contract": {
+    "purchased_tier": "Plan 2",
+    "contract_duration_months": 12,
+    "start_date": "2025-08-01"
+  },
+  "existing_infrastructure": {
+    "gsc_status": "Verified",
+    "ga4_status": "Active",
+    "gbp_status": "Verified"
+  }
+}

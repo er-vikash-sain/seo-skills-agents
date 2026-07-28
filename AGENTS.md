@@ -30,6 +30,40 @@ Your core responsibility is high-level reasoning, strategy orchestration, task d
 - System state lives in plain workspace files (e.g., status trackers, result markdown artifacts).
 - Prefer invoking fewer specialized subagents with focused prompts over spawning redundant loops.
 
+### 5. Multi-Agent State Lock & File Ownership Boundary
+- **Worker Isolation Rule:** Subagents write ONLY to isolated task result files (`artifacts/task_<id>_result.md`). Subagents NEVER edit shared index files, context bases, or tracking files directly.
+- **Orchestrator Merge Rule:** ONLY the `orchestrator` updates central files (`client_data/project_details/project.md`, `tracking_index.json`, `client_issues_log.md`) after verifying worker outputs.
+
+---
+
+## CLIENT WORKSPACE DIRECTORY STRUCTURE
+
+All client data, plans, and historical archives follow this strict layout under `client_data/`:
+
+```text
+client_data/
+├── project_details/
+│   ├── project.md                          # Human-readable client overview & goals
+│   └── client_data_house.json              # Canonical Single Source of Truth (SSOT)
+├── client_feedback/
+│   └── client_issues_log.md                # Mid-month & initial client requests log
+├── plannings/
+│   ├── current_month/
+│   │   ├── tracking_index.json             # Active task status, delays, dependencies
+│   │   ├── monthly_execution_plan.md       # Tier-scoped roadmap & assignments
+│   │   └── week_1..4/                      # Weekly execution task packages
+│   └── archive/
+│       └── {year}/{month}/                 # Archived historical monthly plans & logs
+└── reports/
+    └── {year}/{month}/                     # Archived verified performance reports
+```
+
+### Automated Month Rollover Protocol
+When starting a new campaign month:
+1. Move `current_month/` files to `archive/{year}/{month}/`.
+2. Move finished reports to `reports/{year}/{month}/`.
+3. Clear `current_month/` and initialize new month roadmap incorporating active items from `client_issues_log.md`.
+
 ---
 
 ## ORCHESTRATION LIFECYCLE & DELEGATION POLICY
