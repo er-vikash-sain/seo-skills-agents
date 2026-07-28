@@ -1,0 +1,21 @@
+{
+  "rubric_name": "content_quality_and_localization",
+  "description": "LLM-judge rubric for non-deterministic quality dimensions (Readability, Answer-block extractability, Vernacular localization).",
+  "dimensions": [
+    {
+      "name": "answer_block_extractability",
+      "scale": "1-5",
+      "criteria": "Direct H2/H3 question heading followed immediately by a concise 40-50 word direct resolution paragraph suitable for AI snippet extraction."
+    },
+    {
+      "name": "brand_voice_alignment",
+      "scale": "1-5",
+      "criteria": "Adherence to client tone, vocabulary, and EEAT guidelines with zero marketing fluff."
+    },
+    {
+      "name": "vernacular_localization",
+      "scale": "1-5",
+      "criteria": "Authentic Hindi/Devanagari phrasing matching local search intent rather than literal machine translation."
+    }
+  ]
+}

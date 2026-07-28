@@ -1,0 +1,20 @@
+{
+  "name": "output_scanner_soft_backstop",
+  "description": "Post-generation output scanner hook. Serves as a soft backstop detecting unmasked secrets, PII, or obvious ungrounded placeholder patterns.",
+  "event": "after_agent_output",
+  "scan_rules": [
+    {
+      "rule": "unmasked_secret",
+      "pattern": "(sk-[a-zA-Z0-9]{20,}|AKIA[0-9A-Z]{16}|ghp_[a-zA-Z0-9]{36})",
+      "action": "deny_and_rewrite",
+      "message": "Output contains unmasked secret/API key. Strip credentials before emitting."
+    },
+    {
+      "rule": "unmasked_pii",
+      "pattern": "\\b\\d{3}-\\d{2}-\\d{4}\\b",
+      "action": "deny_and_rewrite",
+      "message": "Output contains unmasked SSN/PII data."
+    }
+  ],
+  "note": "For structured metric provenance enforcement, validator_gate.json and check_provenance.py serve as the hard gate."
+}

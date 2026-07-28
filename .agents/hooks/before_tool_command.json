@@ -1,0 +1,30 @@
+{
+  "name": "before_tool_command_denylist",
+  "description": "Deterministic hook that intercepts shell commands before tool execution to block destructive operations.",
+  "event": "before_tool_command",
+  "deny_patterns": [
+    "^rm\\s+(-[a-zA-Z]*r[a-zA-Z]*f|-[a-zA-Z]*f[a-zA-Z]*r|--recursive\\s+--force)",
+    "curl.*\\|.*sh",
+    "wget.*\\|.*sh",
+    "git\\s+push.*--force",
+    "mkfs",
+    "dd\\s+if="
+  ],
+  "allowed_command_prefixes": [
+    "git",
+    "python3",
+    "python",
+    "node",
+    "npm",
+    "pytest",
+    "ls",
+    "cat",
+    "mkdir",
+    "cp",
+    "mv"
+  ],
+  "on_violation": {
+    "action": "block",
+    "message": "Command execution blocked by security policy (destructive pattern detected)."
+  }
+}

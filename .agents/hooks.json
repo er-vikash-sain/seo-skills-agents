@@ -1,0 +1,19 @@
+{
+  "hooks": [
+    {
+      "name": "before_tool_command_denylist",
+      "event": "before_tool_command",
+      "file": ".agents/hooks/before_tool_command.json"
+    },
+    {
+      "name": "output_scanner_soft_backstop",
+      "event": "after_agent_output",
+      "file": ".agents/hooks/output_scanner.json"
+    },
+    {
+      "name": "validator_provenance_gate",
+      "event": "stop_condition_check",
+      "file": ".agents/hooks/validator_gate.json"
+    }
+  ]
+}

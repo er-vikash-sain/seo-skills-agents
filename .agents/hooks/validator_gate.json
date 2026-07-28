@@ -1,0 +1,11 @@
+{
+  "name": "validator_provenance_gate",
+  "description": "Stop-condition hook requiring deterministic check_provenance.py execution and exit code 0 before any client-facing report can be finalized.",
+  "event": "stop_condition_check",
+  "target_artifact_pattern": ".*report.*\\.md$",
+  "required_checker": "python3 evals/checkers/check_provenance.py {artifact_path}",
+  "on_failure": {
+    "action": "block_finalization",
+    "message": "Report finalization BLOCKED: Deterministic provenance check failed. Every metric must cite a valid source file."
+  }
+}
