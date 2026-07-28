@@ -1,0 +1,19 @@
+{
+  "task_id": "TASK-001",
+  "title": "Full Technical SEO Audit & Cloud SOC Rank Check",
+  "assigned_agent": "technical-audit",
+  "priority": "High",
+  "due_date": "2025-08-07",
+  "inputs": {
+    "target_urls": [
+      "https://acmecyber.example.com",
+      "https://acmecyber.example.com/solutions",
+      "https://acmecyber.example.com/products/guardpro"
+    ],
+    "target_keywords": [
+      "Enterprise AI Threat Detection",
+      "Cloud SOC Monitoring"
+    ],
+    "client_package_tier": "Plan 2"
+  }
+}

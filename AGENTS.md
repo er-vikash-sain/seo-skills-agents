@@ -52,6 +52,10 @@ client_data/
 │   │   ├── tracking_index.json             # Active task status, delays, dependencies
 │   │   ├── monthly_execution_plan.md       # Tier-scoped roadmap & assignments
 │   │   └── week_1..4/                      # Weekly execution task packages
+│   │       └── task_{task_id}/             # Dedicated Task Execution Package Folder
+│   │           ├── task_spec.json          # Inputs, URL lists, target keywords
+│   │           ├── task_changelog.md       # Execution history, retry count, timestamp log
+│   │           └── task_artifacts/         # Generated drafts, schemas, evidence outputs
 │   └── archive/
 │       └── {year}/{month}/                 # Archived historical monthly plans & logs
 └── reports/
