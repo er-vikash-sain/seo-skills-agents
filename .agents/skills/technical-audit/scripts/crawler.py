@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 """
 Offline Technical SEO Site Crawler & Health Diagnostic Tool.
-Scrapes target URLs to analyze status codes, title tags, meta descriptions, H1-H6 hierarchy, and broken links.
+Scrapes target URLs to analyze status codes, title tags, meta descriptions, H1-H6 hierarchy, and canonicals.
+Supports --dry-run / offline mode.
 """
 
 import sys
+import os
 import json
+import argparse
 import urllib.request
 import urllib.parse
 from html.parser import HTMLParser
@@ -43,7 +46,21 @@ class SEOParser(HTMLParser):
         if self.in_title:
             self.title += data.strip()
 
-def audit_url(target_url):
+def audit_url(target_url, dry_run=False):
+    if dry_run or not (target_url.startswith("http://") or target_url.startswith("https://")):
+        return {
+            "url": target_url,
+            "mode": "dry-run",
+            "status_code": 200,
+            "title": "Dry Run Sample Title",
+            "title_length": 19,
+            "meta_description": "Dry Run Sample Meta Description for testing offline functionality.",
+            "meta_description_length": 66,
+            "canonical_url": target_url,
+            "total_links_found": 5,
+            "crawl_status": "Success"
+        }
+
     try:
         req = urllib.request.Request(
             target_url,
@@ -76,10 +93,13 @@ def audit_url(target_url):
         }
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print(json.dumps({"error": "Target URL required as argument"}))
-        sys.exit(1)
-    
-    url = sys.argv[1]
-    result = audit_url(url)
+    parser = argparse.ArgumentParser(description="Run Technical SEO Audit on URL.")
+    parser.add_argument("url", help="Target URL to crawl (e.g. https://example.com)")
+    parser.add_argument("--dry-run", action="store_true", help="Run in offline dry-run mode without network calls")
+    args = parser.parse_args()
+
+    result = audit_url(args.url, dry_run=args.dry_run)
     print(json.dumps(result, indent=2))
+    if result.get("crawl_status") == "Failed":
+        sys.exit(1)
+    sys.exit(0)

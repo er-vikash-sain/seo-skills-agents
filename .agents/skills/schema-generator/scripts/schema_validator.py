@@ -1,15 +1,25 @@
 #!/usr/bin/env python3
 """
 Offline JSON-LD Schema Markup Validator.
-Validates syntax, required @context, @type, and schema parameters for Organization, Product, FAQ, Article schemas.
+Extracts and validates JSON-LD schemas from raw JSON strings or HTML documents.
 """
 
 import sys
 import json
+import re
+import argparse
 
 REQUIRED_SCHEMA_TYPES = ["Organization", "Product", "FAQPage", "Article", "HowTo", "LocalBusiness"]
 
-def validate_schema_json(json_str):
+def extract_json_ld(content):
+    if "<script" in content and "application/ld+json" in content:
+        match = re.search(r'<script[^>]*type=["\']application/ld\+json["\'][^>]*>(.*?)</script>', content, re.DOTALL | re.IGNORECASE)
+        if match:
+            return match.group(1).strip()
+    return content
+
+def validate_schema_json(raw_content):
+    json_str = extract_json_ld(raw_content)
     try:
         data = json.loads(json_str)
     except Exception as e:
@@ -41,16 +51,23 @@ def validate_schema_json(json_str):
     return {"valid": True, "schema_type": schema_type, "message": "Schema JSON-LD is valid"}
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print(json.dumps({"error": "Schema JSON string or file path required"}))
-        sys.exit(1)
+    parser = argparse.ArgumentParser(description="Validate JSON-LD Schema syntax and structure.")
+    parser.add_argument("target", help="JSON string, JSON filepath, or HTML filepath")
+    args = parser.parse_args()
 
-    arg = sys.argv[1]
-    if arg.endswith(".json") or arg.endswith(".html"):
-        with open(arg, "r") as f:
-            content = f.read()
+    target = args.target
+    if target.endswith(".json") or target.endswith(".html"):
+        try:
+            with open(target, "r", encoding="utf-8") as f:
+                content = f.read()
+        except Exception as e:
+            print(json.dumps({"valid": False, "error": f"Could not read file: {str(e)}"}))
+            sys.exit(1)
     else:
-        content = arg
+        content = target
 
     result = validate_schema_json(content)
     print(json.dumps(result, indent=2))
+    if not result.get("valid", False):
+        sys.exit(1)
+    sys.exit(0)

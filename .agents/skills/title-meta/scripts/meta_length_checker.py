@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """
 Title Tag and Meta Description Length & Pixel Width Validator.
-Checks exact character length boundaries (Title: 50-60 chars, Meta: 150-160 chars).
+Checks character length boundaries (Title: 40-60 chars, Meta: 120-160 chars).
 """
 
 import sys
 import json
+import argparse
 
 def check_title_meta_limits(title, meta_desc):
     title_len = len(title)
@@ -23,6 +24,7 @@ def check_title_meta_limits(title, meta_desc):
     elif meta_len > 160:
         meta_status = "Too Long (Triggers truncation in SERP, Over 160 chars)"
 
+    all_optimal = (40 <= title_len <= 60) and (120 <= meta_len <= 160)
     return {
         "title": {
             "text": title,
@@ -36,15 +38,17 @@ def check_title_meta_limits(title, meta_desc):
             "status": meta_status,
             "pass": 120 <= meta_len <= 160
         },
-        "all_optimal": (40 <= title_len <= 60) and (120 <= meta_len <= 160)
+        "all_optimal": all_optimal
     }
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print(json.dumps({"error": "Requires 2 arguments: <title> <meta_description>"}))
-        sys.exit(1)
+    parser = argparse.ArgumentParser(description="Validate Title tag and Meta description character boundaries.")
+    parser.add_argument("title", help="Page Title tag string")
+    parser.add_argument("meta", help="Meta Description string")
+    args = parser.parse_args()
 
-    title_arg = sys.argv[1]
-    meta_arg = sys.argv[2]
-    result = check_title_meta_limits(title_arg, meta_arg)
+    result = check_title_meta_limits(args.title, args.meta)
     print(json.dumps(result, indent=2))
+    if not result.get("all_optimal", False):
+        sys.exit(1)
+    sys.exit(0)

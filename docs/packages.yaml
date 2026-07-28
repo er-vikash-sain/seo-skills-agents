@@ -1,0 +1,38 @@
+# Canonical Package Service Tiers — Single Source of Truth (SSOT)
+
+packages:
+  plan_1:
+    name: "Plan 1 (Baseline)"
+    price_inr: 5999
+    limits:
+      rank_tracking_keywords: 20
+      technical_crawl_pages: 100
+      english_blogs_per_month: 2
+      hindi_blogs_per_month: 0
+      reporting_format: "1-page"
+      gbp_posts_per_month: 0
+      aeo_geo_testing: "None"
+
+  plan_2:
+    name: "Plan 2 (Expanded)"
+    price_inr: 9999
+    limits:
+      rank_tracking_keywords: 50
+      technical_crawl_pages: 500
+      english_blogs_per_month: 2
+      hindi_blogs_per_month: 0
+      reporting_format: "2-page"
+      gbp_posts_per_month: 2
+      aeo_geo_testing: "Light"
+
+  plan_3:
+    name: "Plan 3 (Full)"
+    price_inr: 12999
+    limits:
+      rank_tracking_keywords: "Unlimited"
+      technical_crawl_pages: 5000
+      english_blogs_per_month: 3
+      hindi_blogs_per_month: 1
+      reporting_format: "Full + Trend"
+      gbp_posts_per_month: 4
+      aeo_geo_testing: "Full Multi-Engine"

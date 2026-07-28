@@ -95,6 +95,15 @@ def main():
     else:
         print("  [✗] Architecture Fitness Function: FAIL\n", out7)
 
+    # 8. State JSON Schema Conformance Test
+    total_checks += 1
+    p8, out8 = run_checker(["python3", "evals/checkers/check_state_schemas.py"])
+    if p8:
+        passed_checks += 1
+        print("  [✓] State JSON Schema Conformance Gate: 100% PASS")
+    else:
+        print("  [✗] State JSON Schema Conformance Gate: FAIL\n", out8)
+
     pass_rate = (passed_checks / total_checks) * 100.0
     print("\n--------------------------------------------------")
     print(f"  SCORECARD METRICS:")

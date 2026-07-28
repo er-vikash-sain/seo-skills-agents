@@ -2,7 +2,8 @@
 """
 CORE ANTI-HALLUCINATION GATE: Deterministic Provenance Checker.
 Validates that every factual metric, ranking gain, impression number, or conversion count
-in a report explicitly cites a valid source file [Source: <path>], and verifies the source file exists.
+in a report explicitly cites a valid source file [Source: <path>], verifies the source file exists,
+AND asserts that the claimed numeric value actually exists inside the content of the source file.
 """
 
 import sys
@@ -19,7 +20,7 @@ def check_provenance(report_path):
         lines = f.readlines()
 
     errors = []
-    metric_pattern = re.compile(r'(\d+%|\b\d+\s+(leads|conversions|terms|keywords|pages|impressions)\b|Rank|Growth)', re.IGNORECASE)
+    metric_pattern = re.compile(r'(\+?\d+%\b|\b\d+\s+(leads|conversions|terms|keywords|pages|impressions)\b|\b\d{2,}\b)', re.IGNORECASE)
     source_pattern = re.compile(r'\[Source:\s*([^\s\]]+)\]', re.IGNORECASE)
 
     for line_num, line in enumerate(lines, start=1):
@@ -29,7 +30,8 @@ def check_provenance(report_path):
             continue
 
         # Check if line contains a metric claim
-        if metric_pattern.search(line_str):
+        metric_match = metric_pattern.search(line_str)
+        if metric_match:
             source_match = source_pattern.search(line_str)
             if not source_match:
                 errors.append(f"Line {line_num}: Unsourced metric claim -> '{line_str}'")
@@ -37,6 +39,17 @@ def check_provenance(report_path):
                 source_file = source_match.group(1)
                 if not os.path.exists(source_file):
                     errors.append(f"Line {line_num}: Source file referenced in '{line_str}' does not exist on disk ('{source_file}')")
+                else:
+                    # Deep Value Verification: Check if claimed numeric value exists in source file content
+                    claimed_val = metric_match.group(1).strip()
+                    # Extract raw number digits or string snippet
+                    digits_match = re.search(r'\d+', claimed_val)
+                    if digits_match:
+                        raw_digits = digits_match.group(0)
+                        with open(source_file, 'r', encoding='utf-8', errors='ignore') as sf:
+                            source_content = sf.read()
+                        if raw_digits not in source_content:
+                            errors.append(f"Line {line_num}: Claimed metric value '{claimed_val}' (digit '{raw_digits}') not found in source file content ('{source_file}')")
 
     if errors:
         print(f"[!] CORE PROVENANCE GATE FAILED for {report_path}:")
@@ -44,7 +57,7 @@ def check_provenance(report_path):
             print(f"    - {err}")
         return 1
     else:
-        print(f"[+] CORE PROVENANCE GATE PASSED for {report_path}: 100% metrics grounded in verified source files.")
+        print(f"[+] CORE PROVENANCE GATE PASSED for {report_path}: 100% metrics grounded and verified in source file content.")
         return 0
 
 if __name__ == '__main__':

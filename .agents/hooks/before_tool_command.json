@@ -3,12 +3,13 @@
   "description": "Deterministic hook that intercepts shell commands before tool execution to block destructive operations.",
   "event": "before_tool_command",
   "deny_patterns": [
-    "^rm\\s+(-[a-zA-Z]*r[a-zA-Z]*f|-[a-zA-Z]*f[a-zA-Z]*r|--recursive\\s+--force)",
-    "curl.*\\|.*sh",
-    "wget.*\\|.*sh",
-    "git\\s+push.*--force",
-    "mkfs",
-    "dd\\s+if="
+    "(sudo\\s+)?\\brm\\b.*(-[a-zA-Z]*[rf]|--recursive|--force|-r\\s+-f|-f\\s+-r)",
+    "git\\s+push.*(-f\\b|--force\\b)",
+    "chmod\\s+(-[a-zA-Z]*R|--recursive)",
+    "curl.*\\|.*(ba)?sh",
+    "wget.*\\|.*(ba)?sh",
+    "\\bmkfs\\b",
+    "\\bdd\\s+if="
   ],
   "allowed_command_prefixes": [
     "git",

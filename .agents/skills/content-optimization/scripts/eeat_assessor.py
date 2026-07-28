@@ -5,7 +5,9 @@ Audits web pages for author bylines, expert credentials, external citations, and
 """
 
 import sys
+import os
 import json
+import argparse
 from html.parser import HTMLParser
 
 class EEATParser(HTMLParser):
@@ -33,18 +35,25 @@ class EEATParser(HTMLParser):
         if "references" in cleaned or "sources" in cleaned or "citations" in cleaned:
             self.has_citations = True
 
-def assess_eeat_signals(url_or_html):
+def assess_eeat_signals(target_input):
     parser = EEATParser()
-    if url_or_html.startswith("http://") or url_or_html.startswith("https://"):
+
+    if target_input.startswith("http://") or target_input.startswith("https://"):
         import urllib.request
         try:
-            req = urllib.request.Request(url_or_html, headers={"User-Agent": "EEAT-Assessor/1.0"})
+            req = urllib.request.Request(target_input, headers={"User-Agent": "EEAT-Assessor/1.0"})
             with urllib.request.urlopen(req, timeout=10) as resp:
                 content = resp.read().decode("utf-8", errors="ignore")
         except Exception as e:
             return {"error": str(e), "status": "Failed"}
+    elif os.path.exists(target_input):
+        try:
+            with open(target_input, "r", encoding="utf-8", errors="ignore") as f:
+                content = f.read()
+        except Exception as e:
+            return {"error": f"Failed reading file '{target_input}': {str(e)}", "status": "Failed"}
     else:
-        content = url_or_html
+        content = target_input
 
     parser.feed(content)
 
@@ -61,6 +70,7 @@ def assess_eeat_signals(url_or_html):
     rating = "Strong E-E-A-T" if score >= 80 else ("Moderate E-E-A-T" if score >= 60 else "Weak E-E-A-T (Needs Author & Citations)")
 
     return {
+        "target": target_input,
         "eeat_score": score,
         "rating": rating,
         "signals": {
@@ -68,17 +78,16 @@ def assess_eeat_signals(url_or_html):
             "citations_or_references_detected": has_sources,
             "external_reference_links": external_link_count
         },
-        "recommendations": [
-            "Add explicit author bio box with credentials",
-            "Include 2+ external citations to authoritative sources"
-        ] if score < 80 else []
+        "status": "Success"
     }
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print(json.dumps({"error": "URL or HTML file path required"}))
-        sys.exit(1)
+    parser = argparse.ArgumentParser(description="Audit E-E-A-T signals from URL, HTML file, or HTML string.")
+    parser.add_argument("target", help="URL, HTML filepath, or raw HTML string")
+    args = parser.parse_args()
 
-    target = sys.argv[1]
-    result = assess_eeat_signals(target)
+    result = assess_eeat_signals(args.target)
     print(json.dumps(result, indent=2))
+    if result.get("status") == "Failed":
+        sys.exit(1)
+    sys.exit(0)
