@@ -78,13 +78,23 @@ def check_architecture_fitness():
     if not os.path.exists(TRACEABILITY_PATH):
         errors.append("docs/TRACEABILITY_MATRIX.md missing")
 
+    # Check 5: Architecture Diagrams Verification
+    diagrams_path = os.path.join(WORKSPACE_ROOT, "docs", "ARCHITECTURE_DIAGRAMS.md")
+    if not os.path.exists(diagrams_path):
+        errors.append("docs/ARCHITECTURE_DIAGRAMS.md missing")
+    else:
+        with open(diagrams_path, "r") as f:
+            diag_content = f.read()
+            if "C4 LEVEL 1" not in diag_content or "C4 LEVEL 2" not in diag_content or "TASK LIFECYCLE STATE MACHINE" not in diag_content:
+                errors.append("docs/ARCHITECTURE_DIAGRAMS.md missing required C4 & State Machine sections")
+
     if errors:
         print(f"❌ ARCHITECTURE FITNESS CHECK FAILED ({len(errors)} errors):")
         for err in errors:
             print(f"  - {err}")
         return False
     
-    print("✓ Architecture Fitness Function: 100% PASS (SemVer, ADRs, RFCs, Registry & Traceability Verified)")
+    print("✓ Architecture Fitness Function: 100% PASS (SemVer, ADRs, RFCs, Registry, Diagrams & Traceability Verified)")
     return True
 
 if __name__ == "__main__":
