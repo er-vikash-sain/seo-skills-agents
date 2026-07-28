@@ -86,6 +86,15 @@ def main():
     else:
         print("  [✗] Integration Planning & Tier-Scoping Suite: FAIL\n", out6)
 
+    # 7. Architecture Fitness Function Test
+    total_checks += 1
+    p7, out7 = run_checker(["python3", "evals/checkers/check_architecture_fitness.py"])
+    if p7:
+        passed_checks += 1
+        print("  [✓] Architecture Fitness Function: 100% PASS (All Agents, Skills & Registry Indexes Verified)")
+    else:
+        print("  [✗] Architecture Fitness Function: FAIL\n", out7)
+
     pass_rate = (passed_checks / total_checks) * 100.0
     print("\n--------------------------------------------------")
     print(f"  SCORECARD METRICS:")
