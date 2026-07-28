@@ -8,6 +8,7 @@ max_turns: 12
 timeout_mins: 15
 enable_write_tools: true
 enable_mcp_tools: true
+version: "1.0.0"
 ---
 
 # ROLE: KEYWORD & TOPIC STRATEGIST SUBAGENT (DEEP PRODUCTION SPECIFICATION)

@@ -1,6 +1,7 @@
 ---
 name: onpage-optimization
 description: Audits and applies on-page structural optimizations, handles noindex tag removal, heading tag alignment, and page-level HTML updates adapted by package tier.
+version: "1.0.0"
 ---
 
 # Instructions

@@ -8,6 +8,7 @@ max_turns: 10
 timeout_mins: 15
 enable_write_tools: true
 enable_mcp_tools: true
+version: "1.0.0"
 ---
 
 # ROLE: VALIDATOR SUBAGENT (DEEP PRODUCTION SPECIFICATION)

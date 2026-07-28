@@ -1,6 +1,7 @@
 ---
 name: internal-linking
 description: Audits internal linking structures, builds contextual anchor text placement maps, and optimizes PageRank distribution across site pages based on package tier.
+version: "1.0.0"
 ---
 
 # Instructions

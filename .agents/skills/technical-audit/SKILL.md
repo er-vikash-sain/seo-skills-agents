@@ -1,6 +1,7 @@
 ---
 name: technical-audit
 description: Conducts comprehensive technical SEO crawls, indexability diagnostics, JS rendering audits, redirect chain checks, and crawl budget analysis adapted by client package tier.
+version: "1.0.0"
 ---
 
 # Instructions

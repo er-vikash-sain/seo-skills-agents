@@ -1,6 +1,7 @@
 ---
 name: gbp-posts
 description: Generates local update posts, offer announcements, and product updates formatted for Google Business Profiles based on package tier publishing cadence.
+version: "1.0.0"
 ---
 
 # Instructions

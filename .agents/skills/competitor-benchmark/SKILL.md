@@ -1,6 +1,7 @@
 ---
 name: competitor-benchmark
 description: Conducts quarterly competitor benchmarking, compares domain metrics, backlink velocity, and search market share based on package tier.
+version: "1.0.0"
 ---
 
 # Instructions

@@ -1,6 +1,7 @@
 ---
 name: ai-crawler-control
 description: Generates and updates robots.txt rules, llms.txt files, and AI crawler access policies (GPTBot, ClaudeBot, PerplexityBot) by package tier.
+version: "1.0.0"
 ---
 
 # Instructions

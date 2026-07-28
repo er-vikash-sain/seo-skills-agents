@@ -1,6 +1,7 @@
 ---
 name: answer-optimization
 description: Formats concise answer blocks, featured snippet targets, and voice search Q&A sections formatted for direct AI extraction based on package tier.
+version: "1.0.0"
 ---
 
 # Instructions

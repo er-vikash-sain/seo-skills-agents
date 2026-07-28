@@ -1,6 +1,7 @@
 ---
 name: ai-prompt-research
 description: Researches conversational prompt query patterns, extracts conversational intent structures, and identifies AI answer engine query variations across package tiers.
+version: "1.0.0"
 ---
 
 # Instructions

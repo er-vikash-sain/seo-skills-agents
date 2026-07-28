@@ -1,6 +1,7 @@
 ---
 name: rank-tracking
 description: Executes keyword rank tracking data pulls, tracks SERP positions (20, 50, or unlimited terms), and measures rank volatility by package tier.
+version: "1.0.0"
 ---
 
 # Instructions

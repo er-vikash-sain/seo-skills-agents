@@ -1,6 +1,7 @@
 ---
 name: report-builder
 description: Compiles monthly outcome reports (1-page, 2-page, or full+trend format), aggregates performance telemetry, and prepares evidence-backed reporting documents by package tier.
+version: "1.0.0"
 ---
 
 # Instructions

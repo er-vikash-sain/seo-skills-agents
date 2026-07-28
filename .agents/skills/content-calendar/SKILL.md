@@ -1,6 +1,7 @@
 ---
 name: content-calendar
 description: Builds structured publishing schedules, assigns content deliverables to target release dates, and schedules editorial workflows based on package tier.
+version: "1.0.0"
 ---
 
 # Instructions

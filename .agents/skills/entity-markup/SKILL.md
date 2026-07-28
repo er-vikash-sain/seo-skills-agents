@@ -1,6 +1,7 @@
 ---
 name: entity-markup
 description: Generates and emits sameAs, Wikidata, and Knowledge Graph entity markup snippets to support the entity-geo subagent based on package tier.
+version: "1.0.0"
 ---
 
 # Instructions

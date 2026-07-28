@@ -1,6 +1,7 @@
 ---
 name: shopping-feed
 description: Configures, formats, and enriches Google Shopping XML/JSON feed attributes, handles product mapping, and verifies feed diagnostics by package tier.
+version: "1.0.0"
 ---
 
 # Instructions

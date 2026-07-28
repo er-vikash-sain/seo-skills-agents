@@ -1,6 +1,7 @@
 ---
 name: keyword-research
 description: Performs mechanical keyword data extraction, keyword expansion, search volume aggregation, and LSI keyword grouping to support the keyword-strategist subagent.
+version: "1.0.0"
 ---
 
 # Instructions

@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """
 Architecture Fitness Function Checker for Search Everywhere AI OS.
-Enforces structural architecture compliance without external dependencies:
-1. Every agent folder MUST contain agent.md with frontmatter.
-2. Every skill folder MUST contain SKILL.md with frontmatter.
+Enforces structural architecture compliance:
+1. Every agent folder MUST contain agent.md with version metadata.
+2. Every skill folder MUST contain SKILL.md with version metadata.
 3. Every skill MUST be indexed in docs/CAPABILITY_REGISTRY.md.
+4. Top 10 ADRs MUST exist in docs/adr/.
+5. RFC-0000 & TRACEABILITY_MATRIX MUST exist in docs/.
 """
 
 import os
@@ -14,11 +16,14 @@ WORKSPACE_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath
 AGENTS_DIR = os.path.join(WORKSPACE_ROOT, ".agents", "agents")
 SKILLS_DIR = os.path.join(WORKSPACE_ROOT, ".agents", "skills")
 CAPABILITY_REGISTRY_PATH = os.path.join(WORKSPACE_ROOT, "docs", "CAPABILITY_REGISTRY.md")
+ADR_DIR = os.path.join(WORKSPACE_ROOT, "docs", "adr")
+RFC_DIR = os.path.join(WORKSPACE_ROOT, "docs", "rfc")
+TRACEABILITY_PATH = os.path.join(WORKSPACE_ROOT, "docs", "TRACEABILITY_MATRIX.md")
 
 def check_architecture_fitness():
     errors = []
 
-    # Check 1: Agent files
+    # Check 1: Agent files & SemVer
     if os.path.exists(AGENTS_DIR):
         agent_folders = [f for f in os.listdir(AGENTS_DIR) if os.path.isdir(os.path.join(AGENTS_DIR, f))]
         for folder in agent_folders:
@@ -30,8 +35,10 @@ def check_architecture_fitness():
                     content = f.read()
                     if not content.startswith("---"):
                         errors.append(f"Agent '{folder}/agent.md' missing YAML frontmatter header")
+                    if "version:" not in content:
+                        errors.append(f"Agent '{folder}/agent.md' missing 'version:' frontmatter")
 
-    # Check 2: Skill files & Capability Registry Index
+    # Check 2: Skill files, SemVer & Capability Registry Index
     registry_content = ""
     if os.path.exists(CAPABILITY_REGISTRY_PATH):
         with open(CAPABILITY_REGISTRY_PATH, "r") as f:
@@ -50,10 +57,26 @@ def check_architecture_fitness():
                     content = f.read()
                     if not content.startswith("---"):
                         errors.append(f"Skill '{folder}/SKILL.md' missing YAML frontmatter header")
+                    if "version:" not in content:
+                        errors.append(f"Skill '{folder}/SKILL.md' missing 'version:' frontmatter")
             
             # Verify skill is registered in CAPABILITY_REGISTRY.md
             if folder not in registry_content:
                 errors.append(f"Skill '{folder}' is missing from docs/CAPABILITY_REGISTRY.md")
+
+    # Check 3: ADR Governance Files
+    if not os.path.exists(ADR_DIR):
+        errors.append("docs/adr/ directory missing")
+    else:
+        adr_files = os.listdir(ADR_DIR)
+        if len(adr_files) < 10:
+            errors.append(f"docs/adr/ contains only {len(adr_files)} files; expected 10 ADRs")
+
+    # Check 4: RFC & Traceability Matrix
+    if not os.path.exists(RFC_DIR):
+        errors.append("docs/rfc/ directory missing")
+    if not os.path.exists(TRACEABILITY_PATH):
+        errors.append("docs/TRACEABILITY_MATRIX.md missing")
 
     if errors:
         print(f"❌ ARCHITECTURE FITNESS CHECK FAILED ({len(errors)} errors):")
@@ -61,7 +84,7 @@ def check_architecture_fitness():
             print(f"  - {err}")
         return False
     
-    print("✓ Architecture Fitness Function: 100% PASS (All Agents, Skills & Registry Indexes Verified)")
+    print("✓ Architecture Fitness Function: 100% PASS (SemVer, ADRs, RFCs, Registry & Traceability Verified)")
     return True
 
 if __name__ == "__main__":

@@ -1,6 +1,7 @@
 ---
 name: local-citations
 description: Formats, audits, and builds NAP (Name, Address, Phone) consistency matrices for local directory submissions across package tiers.
+version: "1.0.0"
 ---
 
 # Instructions

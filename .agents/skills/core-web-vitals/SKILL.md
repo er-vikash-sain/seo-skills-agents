@@ -1,6 +1,7 @@
 ---
 name: core-web-vitals
 description: Analyzes PageSpeed Insights and Lighthouse telemetry, profiles LCP, INP, and CLS performance metrics, and generates asset optimization recommendations by package tier.
+version: "1.0.0"
 ---
 
 # Instructions

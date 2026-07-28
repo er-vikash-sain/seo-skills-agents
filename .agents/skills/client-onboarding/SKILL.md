@@ -1,6 +1,7 @@
 ---
 name: client-onboarding
 description: Conducts interactive client onboarding, collects business details, social links, purchased package tier, and initializes the client data house and tracking directories.
+version: "1.0.0"
 ---
 
 # Instructions

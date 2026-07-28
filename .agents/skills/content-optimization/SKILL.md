@@ -1,6 +1,7 @@
 ---
 name: content-optimization
 description: Performs on-page SEO optimization passes on English content drafts, verifies keyword density, heading distribution, and internal link insertions by package tier.
+version: "1.0.0"
 ---
 
 # Instructions

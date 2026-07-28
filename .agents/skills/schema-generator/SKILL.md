@@ -1,6 +1,7 @@
 ---
 name: schema-generator
 description: Generates and validates strongly-typed Schema.org JSON-LD markup supporting Organization, Product, FAQ, HowTo, and Article schemas across package tiers.
+version: "1.0.0"
 ---
 
 # Instructions

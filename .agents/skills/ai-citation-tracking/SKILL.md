@@ -1,6 +1,7 @@
 ---
 name: ai-citation-tracking
 description: Tracks brand citation rates, recommendation frequencies, and URL sources across ChatGPT, Perplexity, Gemini, and Google AIO by package tier.
+version: "1.0.0"
 ---
 
 # Instructions

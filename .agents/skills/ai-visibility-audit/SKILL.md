@@ -1,6 +1,7 @@
 ---
 name: ai-visibility-audit
 description: Audits brand visibility across AI answer engines, measures baseline citation presence in ChatGPT, Perplexity, Gemini, and Google AIO by package tier.
+version: "1.0.0"
 ---
 
 # Instructions

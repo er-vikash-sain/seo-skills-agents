@@ -1,6 +1,7 @@
 ---
 name: review-requests
 description: Formats Google Business review request templates, email/SMS outreach copy, and customer feedback workflows based on package tier.
+version: "1.0.0"
 ---
 
 # Instructions

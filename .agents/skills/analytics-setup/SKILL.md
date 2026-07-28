@@ -1,6 +1,7 @@
 ---
 name: analytics-setup
 description: Configures Google Analytics 4 (GA4) property tracking, Google Search Console (GSC) verification, custom event mapping, and search telemetry pipelines based on package tier.
+version: "1.0.0"
 ---
 
 # Instructions

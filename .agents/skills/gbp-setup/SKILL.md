@@ -1,6 +1,7 @@
 ---
 name: gbp-setup
 description: Audits, structures, and optimizes Google Business Profile (GBP) listing parameters, category selection, business details, and cover settings by package tier.
+version: "1.0.0"
 ---
 
 # Instructions

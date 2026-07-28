@@ -1,6 +1,7 @@
 ---
 name: product-copy
 description: Formats and structures e-commerce product descriptions into AI-extractable, structured copy blocks tailored for e-commerce catalog pages across package tiers.
+version: "1.0.0"
 ---
 
 # Instructions

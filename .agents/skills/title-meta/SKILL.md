@@ -1,6 +1,7 @@
 ---
 name: title-meta
 description: Constructs CTR-optimized page Title tags and Meta descriptions adhering to character length constraints and target keyword specs based on package tier.
+version: "1.0.0"
 ---
 
 # Instructions

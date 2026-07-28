@@ -1,42 +1,43 @@
 # ENTERPRISE BUSINESS CAPABILITY REGISTRY & TRACEABILITY MATRIX
 
-**Scope:** Unified 5-Layer Capability Mapping (`Business Capability` $\rightarrow$ `Domain` $\rightarrow$ `Agent` $\rightarrow$ `Skill` $\rightarrow$ `Verification Gate`)
+**Status:** Auto-Generated Single Source of Truth (SSOT)
+**Generator:** `evals/checkers/generate_capability_registry.py`
 
 ---
 
-## 🏛️ 5-LAYER ENTERPRISE CAPABILITY TRACEABILITY MATRIX
+## 🏛️ AUTOMATED CAPABILITY REGISTRY TABLE
 
-| Business Capability | Bounded Domain | Assigned Reasoning Agent | Assigned Procedural Skill | Primary Acceptance Gate |
+| Skill Slug | Version | Description | Assigned Agent | Primary Acceptance Gate |
 |---|---|---|---|---|
-| **Technical Site Diagnostics** | Technical & Crawl | `orchestrator` | `technical-audit` | Syntax & Crawl Check |
-| **Search Telemetry & Analytics** | Technical & Analytics | `orchestrator` | `analytics-setup` | GA4 / GSC Verification |
-| **On-Page Structural SEO** | Content & On-Page | `orchestrator` | `onpage-optimization` | `check_title_meta.py` |
-| **CTR Title & Meta Engineering** | Content & On-Page | `orchestrator` | `title-meta` | `check_title_meta.py` |
-| **Core Web Vitals Optimization** | Performance & Web | `orchestrator` | `core-web-vitals` | PageSpeed Metric Proof |
-| **Structured Entity Schema** | Entity & Technical | `orchestrator` | `schema-generator` | `check_schema.py` |
-| **Internal Link Graph Optimization**| Architecture & Links | `orchestrator` | `internal-linking` | `check_internal_links.py` |
-| **E-Commerce Product Copy** | Product & Copywriting | `orchestrator` | `product-copy` | Product Copy Spec |
-| **Google Shopping Feed Format** | Product & Feed Ops | `orchestrator` | `shopping-feed` | XML / JSON Feed Validator |
-| **Keyword & Topic Clustering** | Search Intelligence | `keyword-strategist` | `keyword-research` | Topic Cluster Spec |
-| **AI Conversational Prompt Res.** | AI Search Intelligence | `keyword-strategist` | `ai-prompt-research` | Prompt Matrix Spec |
-| **Editorial Publishing Calendar** | Content Operations | `planner` | `content-calendar` | Calendar Release Dates |
-| **High E-E-A-T English Articles** | Content Creation | `english-writer` | `content-optimization` | Provenance & Tone Check |
-| **Hindi & Vernacular Content** | Content Localization | `hindi-writer` | Direct Localization | Native Hindi Checker |
-| **AEO Direct Answer Blocks** | Answer Optimization | `entity-geo` | `answer-optimization` | 40-50 Word Direct Answer |
-| **Knowledge Graph sameAs Markup** | Entity Architecture | `entity-geo` | `entity-markup` | `check_schema.py` |
-| **AI Crawler Access Directives** | AI Governance | `orchestrator` | `ai-crawler-control` | `check_ai_crawler_control.py` |
-| **Multi-Engine GEO Testing** | Generative Search | `entity-geo` | `ai-visibility-audit` | Multi-Engine Citation Matrix |
-| **Google Business Profile Setup** | Local Search | `orchestrator` | `gbp-setup` | Listing Audit Proof |
-| **GBP Local Updates & Posts** | Local Search | `orchestrator` | `gbp-posts` | GBP Post Cadence Spec |
-| **Local Citation & NAP Matrix** | Local Search | `orchestrator` | `local-citations` | NAP Consistency Audit |
-| **Review Request Workflows** | Reputation Ops | `orchestrator` | `review-requests` | Outreach Template Spec |
-| **Keyword SERP Rank Tracking** | Analytics & SERP | `orchestrator` | `rank-tracking` | Rank Volatility Log |
-| **AI Brand Citation Tracking** | AI Analytics | `orchestrator` | `ai-citation-tracking` | Citation Frequency Log |
-| **Competitor Market Share Bench.**| Strategic Intelligence | `orchestrator` | `competitor-benchmark` | Quarterly Benchmark Report |
-| **Monthly Outcome Reporting** | Business Intelligence | `orchestrator` | `report-builder` | `check_provenance.py` |
-| **Client Onboarding & Data House** | Account Operations | `orchestrator` | `client-onboarding` | `client_data_house.json` |
+| `ai-citation-tracking` | `v1.0.0` | Tracks brand citation rates, recommendation frequencies, and URL sources across ChatGPT, Perplexity, Gemini, and Google AIO by package tier. | `orchestrator` | `Deterministic Gate / Scorecard` |
+| `ai-crawler-control` | `v1.0.0` | Generates and updates robots.txt rules, llms.txt files, and AI crawler access policies (GPTBot, ClaudeBot, PerplexityBot) by package tier. | `orchestrator` | `check_ai_crawler_control.py` |
+| `ai-prompt-research` | `v1.0.0` | Researches conversational prompt query patterns, extracts conversational intent structures, and identifies AI answer engine query variations across package tiers. | `keyword-strategist` | `Deterministic Gate / Scorecard` |
+| `ai-visibility-audit` | `v1.0.0` | Audits brand visibility across AI answer engines, measures baseline citation presence in ChatGPT, Perplexity, Gemini, and Google AIO by package tier. | `entity-geo` | `Deterministic Gate / Scorecard` |
+| `analytics-setup` | `v1.0.0` | Configures Google Analytics 4 (GA4) property tracking, Google Search Console (GSC) verification, custom event mapping, and search telemetry pipelines based on package tier. | `orchestrator` | `Deterministic Gate / Scorecard` |
+| `answer-optimization` | `v1.0.0` | Formats concise answer blocks, featured snippet targets, and voice search Q&A sections formatted for direct AI extraction based on package tier. | `entity-geo` | `Deterministic Gate / Scorecard` |
+| `client-onboarding` | `v1.0.0` | Conducts interactive client onboarding, collects business details, social links, purchased package tier, and initializes the client data house and tracking directories. | `orchestrator` | `client_data_house.json SSOT` |
+| `competitor-benchmark` | `v1.0.0` | Conducts quarterly competitor benchmarking, compares domain metrics, backlink velocity, and search market share based on package tier. | `orchestrator` | `Deterministic Gate / Scorecard` |
+| `content-calendar` | `v1.0.0` | Builds structured publishing schedules, assigns content deliverables to target release dates, and schedules editorial workflows based on package tier. | `orchestrator` | `Deterministic Gate / Scorecard` |
+| `content-optimization` | `v1.0.0` | Performs on-page SEO optimization passes on English content drafts, verifies keyword density, heading distribution, and internal link insertions by package tier. | `english-writer` | `Deterministic Gate / Scorecard` |
+| `core-web-vitals` | `v1.0.0` | Analyzes PageSpeed Insights and Lighthouse telemetry, profiles LCP, INP, and CLS performance metrics, and generates asset optimization recommendations by package tier. | `orchestrator` | `Deterministic Gate / Scorecard` |
+| `entity-markup` | `v1.0.0` | Generates and emits sameAs, Wikidata, and Knowledge Graph entity markup snippets to support the entity-geo subagent based on package tier. | `entity-geo` | `Deterministic Gate / Scorecard` |
+| `gbp-posts` | `v1.0.0` | Generates local update posts, offer announcements, and product updates formatted for Google Business Profiles based on package tier publishing cadence. | `orchestrator` | `Deterministic Gate / Scorecard` |
+| `gbp-setup` | `v1.0.0` | Audits, structures, and optimizes Google Business Profile (GBP) listing parameters, category selection, business details, and cover settings by package tier. | `orchestrator` | `Deterministic Gate / Scorecard` |
+| `internal-linking` | `v1.0.0` | Audits internal linking structures, builds contextual anchor text placement maps, and optimizes PageRank distribution across site pages based on package tier. | `orchestrator` | `check_internal_links.py` |
+| `keyword-research` | `v1.0.0` | Performs mechanical keyword data extraction, keyword expansion, search volume aggregation, and LSI keyword grouping to support the keyword-strategist subagent. | `keyword-strategist` | `Deterministic Gate / Scorecard` |
+| `local-citations` | `v1.0.0` | Formats, audits, and builds NAP (Name, Address, Phone) consistency matrices for local directory submissions across package tiers. | `orchestrator` | `Deterministic Gate / Scorecard` |
+| `onpage-optimization` | `v1.0.0` | Audits and applies on-page structural optimizations, handles noindex tag removal, heading tag alignment, and page-level HTML updates adapted by package tier. | `orchestrator` | `check_title_meta.py` |
+| `product-copy` | `v1.0.0` | Formats and structures e-commerce product descriptions into AI-extractable, structured copy blocks tailored for e-commerce catalog pages across package tiers. | `orchestrator` | `Deterministic Gate / Scorecard` |
+| `rank-tracking` | `v1.0.0` | Executes keyword rank tracking data pulls, tracks SERP positions (20, 50, or unlimited terms), and measures rank volatility by package tier. | `orchestrator` | `Deterministic Gate / Scorecard` |
+| `report-builder` | `v1.0.0` | Compiles monthly outcome reports (1-page, 2-page, or full+trend format), aggregates performance telemetry, and prepares evidence-backed reporting documents by package tier. | `orchestrator` | `check_provenance.py` |
+| `review-requests` | `v1.0.0` | Formats Google Business review request templates, email/SMS outreach copy, and customer feedback workflows based on package tier. | `orchestrator` | `Deterministic Gate / Scorecard` |
+| `schema-generator` | `v1.0.0` | Generates and validates strongly-typed Schema.org JSON-LD markup supporting Organization, Product, FAQ, HowTo, and Article schemas across package tiers. | `orchestrator` | `check_schema.py` |
+| `shopping-feed` | `v1.0.0` | Configures, formats, and enriches Google Shopping XML/JSON feed attributes, handles product mapping, and verifies feed diagnostics by package tier. | `orchestrator` | `Deterministic Gate / Scorecard` |
+| `technical-audit` | `v1.0.0` | Conducts comprehensive technical SEO crawls, indexability diagnostics, JS rendering audits, redirect chain checks, and crawl budget analysis adapted by client package tier. | `orchestrator` | `Deterministic Gate / Scorecard` |
+| `title-meta` | `v1.0.0` | Constructs CTR-optimized page Title tags and Meta descriptions adhering to character length constraints and target keyword specs based on package tier. | `orchestrator` | `check_title_meta.py` |
 
 ---
 
-## 🔒 CAPABILITY GOVERNANCE LAW
-Every new capability introduced to the OS MUST be registered in this matrix with an assigned Bounded Domain, Reasoning Agent, Procedural Skill, and Deterministic Acceptance Gate.
+## 🔒 ARCHITECTURE GOVERNANCE LAW
+This registry is automatically generated and verified by `evals/run_scorecard.py`.
+Every skill MUST have a valid `SKILL.md` file with name, version, and description metadata.
