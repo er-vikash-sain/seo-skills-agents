@@ -53,9 +53,11 @@ Write completed Hindi draft to `client_data/plannings/current_month/week_{w}/tas
 
 ---
 
-## 5. EDGE CASE & ZERO-HALLUCINATION RULES
+## 5. EDGE CASE & QUALITY STANDARDS
+- **Plagiarism Limit:** 0% Plagiarism. All text must be original Devanagari copy.
+- **AI Detection Threshold:** $<10\%$ AI pattern score. Ensure authentic native phrasing.
+- **Keyword Density:** Maintain 1-2% primary keyword density naturally in Hindi.
 - **No Translation Artifacts:** Any sentence sounding unnatural to a native Hindi speaker MUST be rewritten.
-- **Zero Hallucination:** Maintain 100% factual integrity with source briefs.
 
 ---
 

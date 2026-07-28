@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TrackingIndexSchema",
+  "type": "object",
+  "properties": {
+    "campaign_month": { "type": "string" },
+    "plan_tier": { "type": "string" },
+    "overall_status": { "type": "string" },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "task_id": { "type": "string" },
+          "title": { "type": "string" },
+          "assigned_to": { "type": "string" },
+          "priority": { "type": "string" },
+          "status": { "type": "string" },
+          "due_date": { "type": "string" }
+        },
+        "required": ["task_id", "title", "assigned_to", "priority", "status", "due_date"]
+      }
+    }
+  },
+  "required": ["campaign_month", "plan_tier", "overall_status", "tasks"]
+}

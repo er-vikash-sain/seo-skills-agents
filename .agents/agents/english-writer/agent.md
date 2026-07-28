@@ -58,9 +58,11 @@ Write completed draft to `client_data/plannings/current_month/week_{w}/task_{tas
 
 ---
 
-## 5. EDGE CASE & ZERO-HALLUCINATION RULES
-- **Absolute Fact Grounding:** Never invent statistics, claims, or expert quotes. Any assertion lacking a source reference must be omitted or framed as a general industry practice.
-- **Brand Voice Consistency:** Strictly enforce tone rules (e.g. Formal B2B, Conversational SaaS, Technical Enterprise).
+## 5. EDGE CASE & QUALITY STANDARDS
+- **Plagiarism Limit:** 0% Plagiarism. All text must be original or appropriately cited.
+- **AI Detection Threshold:** $<10\%$ AI pattern score. Enforce human E-E-A-T voice and natural sentence variation.
+- **Keyword Density:** Maintain 1-2% primary keyword density naturally across the draft.
+- **Absolute Fact Grounding:** Never invent statistics, claims, or expert quotes. Any assertion lacking a source reference must be omitted.
 
 ---
 

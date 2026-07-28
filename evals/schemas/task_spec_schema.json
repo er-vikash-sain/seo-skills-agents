@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TaskSpecSchema",
+  "type": "object",
+  "properties": {
+    "task_id": { "type": "string" },
+    "title": { "type": "string" },
+    "assigned_agent": { "type": "string" },
+    "priority": { "type": "string" },
+    "due_date": { "type": "string" },
+    "inputs": {
+      "type": "object",
+      "properties": {
+        "target_urls": { "type": "array", "items": { "type": "string" } },
+        "target_keywords": { "type": "array", "items": { "type": "string" } },
+        "client_package_tier": { "type": "string" }
+      },
+      "required": ["target_urls", "target_keywords", "client_package_tier"]
+    }
+  },
+  "required": ["task_id", "title", "assigned_agent", "priority", "due_date", "inputs"]
+}
