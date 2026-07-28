@@ -2,7 +2,7 @@
 """
 Google PageSpeed Insights Telemetry Fetcher.
 Calls official free PSI API to retrieve Core Web Vitals (LCP, CLS, INP).
-Supports --dry-run / offline mode.
+Supports --dry-run / offline mode. Strict URL scheme validation.
 """
 
 import sys
@@ -14,7 +14,7 @@ import urllib.parse
 PSI_ENDPOINT = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed"
 
 def fetch_cwv_metrics(url, strategy="mobile", dry_run=False):
-    if dry_run or not (url.startswith("http://") or url.startswith("https://")):
+    if dry_run:
         return {
             "url": url,
             "strategy": strategy,
@@ -27,6 +27,15 @@ def fetch_cwv_metrics(url, strategy="mobile", dry_run=False):
                 "first_contentful_paint": "0.9 s"
             },
             "status": "Success"
+        }
+
+    # Strict URL Scheme Validation
+    if not (url.startswith("http://") or url.startswith("https://")):
+        return {
+            "url": url,
+            "strategy": strategy,
+            "error": "Invalid URL scheme: Must start with http:// or https:// (e.g., https://acmecyber.com)",
+            "status": "Failed"
         }
 
     try:
@@ -66,7 +75,7 @@ def fetch_cwv_metrics(url, strategy="mobile", dry_run=False):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Fetch Core Web Vitals telemetry via Google PageSpeed Insights.")
-    parser.add_argument("url", help="Target URL (e.g. https://example.com)")
+    parser.add_argument("url", help="Target URL (must start with http:// or https://)")
     parser.add_argument("--strategy", choices=["mobile", "desktop"], default="mobile", help="Audit strategy")
     parser.add_argument("--dry-run", action="store_true", help="Run offline without network API calls")
     args = parser.parse_args()

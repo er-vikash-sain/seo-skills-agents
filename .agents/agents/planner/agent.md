@@ -30,7 +30,7 @@ When invoked, you MUST read and parse the following workspace files:
 ---
 
 ## 3. 5-STAGE REASONING FRAMEWORK
-1. **Tier Bound Resolution:** Inspect `purchased_tier` (Plan 1, Plan 2, or Plan 3). Enforce strict task caps (e.g., Plan 1 = 2 blogs/mo, 20 keywords; Plan 2 = 2 blogs/mo, 50 keywords, AEO; Plan 3 = 3 English + 1 Hindi blog/mo, unlimited terms, full GEO). Reject out-of-scope work.
+1. **Tier Bound Resolution:** Read canonical SSOT `docs/packages.yaml`. Inspect `purchased_tier` (Plan 1, Plan 2, or Plan 3) and strictly enforce limits defined in `docs/packages.yaml`. Reject out-of-scope work.
 2. **Historical Continuity & Rollover Check:** Inspect `archive/` logs. Carry over incomplete high-priority tasks from previous months.
 3. **Client Issue Prioritization:** Parse active items in `client_issues_log.md`. Assign top priority (`Critical`/`High`) to client-reported drops or urgent focus items.
 4. **Dependency Graph Construction:** Link tasks sequentially (e.g., `technical-audit` $\rightarrow$ `onpage-optimization` $\rightarrow$ `content-optimization`).

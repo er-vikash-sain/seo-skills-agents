@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """
 Agentic Engine Optimization (AEO) Token Budget & LLMs.txt Auditor.
-Inspired by Addy Osmani's agentic-seo framework.
 Audits web pages for AI Agent readability, per-page token consumption, and llms.txt index formatting.
+Supports argparse, --help, --dry-run, and strict URL scheme validation.
 """
 
 import sys
 import json
+import argparse
 import urllib.request
 from html.parser import HTMLParser
 
@@ -21,7 +22,6 @@ class TextExtractor(HTMLParser):
             self.text_blocks.append(cleaned)
 
 def estimate_tokens(text):
-    # Rule of thumb: ~4 characters per token in English
     words = text.split()
     char_count = len(text)
     token_estimate = int(char_count / 4)
@@ -31,7 +31,27 @@ def estimate_tokens(text):
         "estimated_tokens": token_estimate
     }
 
-def audit_agentic_seo(url):
+def audit_agentic_seo(url, dry_run=False):
+    if dry_run:
+        return {
+            "url": url,
+            "mode": "dry-run",
+            "token_budget_status": "Optimal",
+            "word_count": 1200,
+            "character_count": 7200,
+            "estimated_tokens": 1800,
+            "agent_readiness_score": 100,
+            "status": "Success"
+        }
+
+    # Strict URL Scheme Validation
+    if not (url.startswith("http://") or url.startswith("https://")):
+        return {
+            "url": url,
+            "error": "Invalid URL scheme: Must start with http:// or https:// (e.g., https://acmecyber.com)",
+            "status": "Failed"
+        }
+
     try:
         req = urllib.request.Request(url, headers={"User-Agent": "AEO-Agentic-Auditor/1.0"})
         with urllib.request.urlopen(req, timeout=10) as resp:
@@ -44,10 +64,9 @@ def audit_agentic_seo(url):
         token_info = estimate_tokens(plain_text)
         est_tokens = token_info["estimated_tokens"]
 
-        # Budget Check: Pages > 15,000 tokens flag token overflow risk
         status = "Optimal"
         if est_tokens > 15000:
-            status = "Token Oversized (Exceeds 15k token budget, risk of agent context truncation)"
+            status = "Token Oversized (Exceeds 15k token budget)"
         elif est_tokens < 100:
             status = "Thin Content (Under 100 tokens)"
 
@@ -58,7 +77,7 @@ def audit_agentic_seo(url):
             "character_count": token_info["character_count"],
             "estimated_tokens": est_tokens,
             "agent_readiness_score": 100 if est_tokens <= 15000 else 60,
-            "recommendation": "Maintain clean Markdown structure and keep per-page tokens under 15,000."
+            "status": "Success"
         }
     except Exception as e:
         return {
@@ -68,10 +87,13 @@ def audit_agentic_seo(url):
         }
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print(json.dumps({"error": "Target URL required as argument"}))
-        sys.exit(1)
+    parser = argparse.ArgumentParser(description="Audit URL for LLM token budget and AEO readiness.")
+    parser.add_argument("url", help="Target URL (must start with http:// or https://)")
+    parser.add_argument("--dry-run", action="store_true", help="Run offline without network HTTP calls")
+    args = parser.parse_args()
 
-    target_url = sys.argv[1]
-    result = audit_agentic_seo(target_url)
+    result = audit_agentic_seo(args.url, dry_run=args.dry_run)
     print(json.dumps(result, indent=2))
+    if result.get("status") == "Failed":
+        sys.exit(1)
+    sys.exit(0)

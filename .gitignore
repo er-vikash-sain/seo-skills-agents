@@ -9,8 +9,3 @@ credentials/
 __pycache__/
 *.pyc
 .pytest_cache/
-
-# Active Client Tenant Data (Framework Isolation)
-# Exclude active client data from framework repository
-client_data/
-!client_data/**/.gitkeep

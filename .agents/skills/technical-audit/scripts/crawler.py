@@ -2,11 +2,10 @@
 """
 Offline Technical SEO Site Crawler & Health Diagnostic Tool.
 Scrapes target URLs to analyze status codes, title tags, meta descriptions, H1-H6 hierarchy, and canonicals.
-Supports --dry-run / offline mode.
+Supports --dry-run / offline mode. Explicitly validates URL scheme.
 """
 
 import sys
-import os
 import json
 import argparse
 import urllib.request
@@ -47,7 +46,7 @@ class SEOParser(HTMLParser):
             self.title += data.strip()
 
 def audit_url(target_url, dry_run=False):
-    if dry_run or not (target_url.startswith("http://") or target_url.startswith("https://")):
+    if dry_run:
         return {
             "url": target_url,
             "mode": "dry-run",
@@ -59,6 +58,15 @@ def audit_url(target_url, dry_run=False):
             "canonical_url": target_url,
             "total_links_found": 5,
             "crawl_status": "Success"
+        }
+
+    # Strict URL Scheme Validation
+    if not (target_url.startswith("http://") or target_url.startswith("https://")):
+        return {
+            "url": target_url,
+            "status_code": 0,
+            "error": "Invalid URL scheme: Must start with http:// or https:// (e.g., https://acmecyber.com)",
+            "crawl_status": "Failed"
         }
 
     try:
@@ -94,7 +102,7 @@ def audit_url(target_url, dry_run=False):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run Technical SEO Audit on URL.")
-    parser.add_argument("url", help="Target URL to crawl (e.g. https://example.com)")
+    parser.add_argument("url", help="Target URL to crawl (must include http:// or https://)")
     parser.add_argument("--dry-run", action="store_true", help="Run in offline dry-run mode without network calls")
     args = parser.parse_args()
 
