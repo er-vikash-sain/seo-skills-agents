@@ -7,6 +7,7 @@ Organic search performance grew steadily this sprint following technical schema 
 - Organic Impression Growth: +34% [Source: evals/fixtures/gsc_telemetry_stub.json]
 - Target Keyword Rank Gains: 12 terms moved to Top 5 [Source: evals/fixtures/gsc_telemetry_stub.json]
 - Total Conversions Generated: 450 leads (Unbacked Claim: No source cited for 450 leads)
+- Organic CTR Growth: +77% [Source: evals/fixtures/gsc_telemetry_stub.json]
 
 ## Active Tasks Completed
 - Core page title & meta tag updates.

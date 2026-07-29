@@ -19,7 +19,7 @@ def check_provenance(report_path):
         lines = f.readlines()
 
     errors = []
-    metric_pattern = re.compile(r'(\+?\d+%\b|\b\d+\s+(leads|conversions|terms|keywords|pages|impressions)\b)', re.IGNORECASE)
+    metric_pattern = re.compile(r'(\+?\d+(?:\.\d+)?%|\b\d+\s+(leads|conversions|terms|keywords|pages|impressions)\b)', re.IGNORECASE)
     source_pattern = re.compile(r'\[Source:\s*([^\s\]]+)\]', re.IGNORECASE)
 
     for line_num, line in enumerate(lines, start=1):
