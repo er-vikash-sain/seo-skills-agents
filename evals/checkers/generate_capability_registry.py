@@ -54,16 +54,18 @@ def generate_registry():
             name = os.path.basename(os.path.dirname(sf))
         
         assigned_agent = "orchestrator"
-        if name in ["keyword-research", "ai-prompt-research"]:
-            assigned_agent = "keyword-strategist"
-        elif name in ["content-optimization"]:
-            assigned_agent = "english-writer"
+        if name in ["keyword-research", "ai-prompt-research", "programmatic-seo", "competitor-alternatives"]:
+            assigned_agent = "keyword-strategist / english-writer"
+        elif name in ["content-optimization", "humanizer"]:
+            assigned_agent = "english-writer / hindi-writer"
         elif name in ["answer-optimization", "entity-markup", "ai-visibility-audit"]:
             assigned_agent = "entity-geo"
 
         gate = "Deterministic Gate / Scorecard"
         if "schema" in name:
             gate = "check_schema.py"
+        elif "humanizer" in name:
+            gate = "check_ai_slop.py"
         elif "title" in name or "meta" in name or "onpage" in name:
             gate = "check_title_meta.py"
         elif "link" in name:

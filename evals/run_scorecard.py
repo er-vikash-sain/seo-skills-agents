@@ -104,6 +104,24 @@ def main():
     else:
         print("  [✗] State JSON Schema Conformance Gate: FAIL\n", out8)
 
+    # 9. AI Slop & Humanizer Checker Test (Clean Draft Pass)
+    total_checks += 1
+    p9, out9 = run_checker(["python3", "evals/checkers/check_ai_slop.py", "evals/fixtures/clean_draft.md"])
+    if p9:
+        passed_checks += 1
+        print("  [✓] AI Humanizer Slop Checker (Clean Draft): 100% PASS")
+    else:
+        print("  [✗] AI Humanizer Slop Checker (Clean Draft): FAIL\n", out9)
+
+    # 10. AI Slop & Humanizer Checker Test (Catch Slop Draft Pass)
+    total_checks += 1
+    p10_pass, out10 = run_checker(["python3", "evals/checkers/check_ai_slop.py", "evals/fixtures/slop_draft.md"])
+    if not p10_pass and "AI SLOP AUDIT FAILED" in out10:
+        passed_checks += 1
+        print("  [✓] AI Humanizer Slop Validator (Catch Slop Draft): 100% PASS (Successfully Blocked)")
+    else:
+        print("  [✗] AI Humanizer Slop Validator (Catch Slop Draft): FAIL (Slop draft was not blocked!)\n", out10)
+
     pass_rate = (passed_checks / total_checks) * 100.0
     print("\n--------------------------------------------------")
     print(f"  SCORECARD METRICS:")

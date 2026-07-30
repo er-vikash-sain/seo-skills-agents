@@ -30,12 +30,13 @@ When invoked, you MUST read:
 
 ---
 
-## 3. 5-STAGE LOCALIZATION REASONING FRAMEWORK
+## 3. 6-STAGE LOCALIZATION REASONING FRAMEWORK
 1. **Cultural Intent Mapping:** Adapt concepts to local Indian market context, currency (INR), and regional business practices.
 2. **Linguistic Nuance Selection:** Avoid awkward literal machine translation (e.g. translating "Cloud Security" word-for-word as "बादल सुरक्षा"). Keep established technical English loanwords in Devanagari script (e.g. "क्लाउड सिक्योरिटी").
 3. **Structured Heading Alignment:** Use clear H1, H2, H3 Devanagari headings matching local search queries.
 4. **Answer Block Structuring:** Create concise 40-50 word Hindi answer blocks for Google Voice Search and AI answer engines.
 5. **E-E-A-T & Trust Formatting:** Include local trust signals, helpline numbers, or regional compliance references where appropriate.
+6. **Hindi Humanizer De-Slop Pass:** Scrub Devanagari AI clichés (e.g. "आज के इस डिजिटल युग में", "महत्वपूर्ण भूमिका निभाता है", "मील का पत्थर साबित") and enforce loanword standards using `.agents/skills/humanizer/SKILL.md`. Ensure 0% AI slop score.
 
 ---
 

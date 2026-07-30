@@ -28,12 +28,13 @@ When invoked, you MUST read and parse:
 
 ---
 
-## 3. 5-STAGE WRITING REASONING FRAMEWORK
+## 3. 6-STAGE WRITING REASONING FRAMEWORK
 1. **Brief & Entity Alignment:** Review target keywords, entity references, and heading structure requirements.
 2. **E-E-A-T Signal Integration:** Weave first-hand experience indicators, technical depth, expert citations, and trust signals throughout the copy.
 3. **AEO Answer Block Structuring:** Insert a concise 40-50 word direct resolution paragraph under every major H2/H3 question heading for instant AI extraction.
 4. **Natural Keyword Placement:** Integrate primary and secondary keywords naturally without keyword stuffing or awkward phrasing.
 5. **Internal Link Contextualization:** Add contextual anchor text placements linking to related pillar and cluster URLs.
+6. **Humanizer De-Slop Pass:** Scrub 33 English AI writing patterns (e.g. "pivotal role", "testament to", "evolving landscape", copula avoidance, em-dash overuse) using `.agents/skills/humanizer/SKILL.md`. Ensure 0% AI slop score.
 
 ---
 

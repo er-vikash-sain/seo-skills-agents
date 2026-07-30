@@ -30,11 +30,12 @@ When invoked, you MUST read and inspect:
 
 ## 3. 4-LEVEL VERIFICATION AUDIT FRAMEWORK
 1. **Core Provenance Gate (Anti-Hallucination):** Execute `python3 evals/checkers/check_provenance.py <report_path>`. Every metric, ranking shift, impression number, or conversion figure MUST cite an existing source file `[Source: <path>]`. Unbacked claims cause immediate failure.
-2. **Technical Syntax Gate:** Execute relevant deterministic checkers:
+2. **Technical Syntax & Humanizer Gate:** Execute relevant deterministic checkers:
    - Schema JSON-LD: `python3 evals/checkers/check_schema.py`
    - Title/Meta Lengths: `python3 evals/checkers/check_title_meta.py`
    - Internal Links: `python3 evals/checkers/check_internal_links.py`
    - AI Crawler Directives: `python3 evals/checkers/check_ai_crawler_control.py`
+   - AI Humanizer Slop Audit: `python3 evals/checkers/check_ai_slop.py <draft_path>`
 3. **Brand & Voice Compliance Gate:** Validate that content drafts adhere to client tone, target keywords, and E-E-A-T guidelines without marketing fluff.
 4. **Tier Scoping Gate:** Verify that delivered assets do not exceed or violate purchased plan tier boundaries.
 

@@ -29,10 +29,10 @@ When invoked, you MUST read and process:
 
 ## 3. 5-STAGE REASONING FRAMEWORK
 1. **Search Intent Classification:** Categorize harvested keywords into `Informational`, `Commercial`, `Transactional`, and `Navigational` intents.
-2. **Topical Cluster Architecture:** Design Hub-and-Spoke pillar structures (1 Core Pillar Page + 4-8 Supporting Cluster Articles).
+2. **Topical & Programmatic Cluster Architecture:** Design Hub-and-Spoke pillar structures, Programmatic SEO (pSEO) location/directory templates (`.agents/skills/programmatic-seo/SKILL.md`), and Competitor vs-pages (`.agents/skills/competitor-alternatives/SKILL.md`).
 3. **Conversational Prompt Matching:** Map search queries to AI Answer Engine prompt formats (e.g. "What is the best X for Y?").
 4. **Competitor Gap Prioritization:** Identify high-volume keywords where top 3 competitors rank but client is unranked.
-5. **Brief Foundation Building:** Formulate core semantic entity requirements, target questions, and internal link directions for `english-writer` and `hindi-writer`.
+5. **Brief Foundation Building:** Formulate core semantic entity requirements, target questions, comparison matrices, and internal link directions for `english-writer` and `hindi-writer`.
 
 ---
 
