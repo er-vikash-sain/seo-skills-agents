@@ -16,11 +16,12 @@ Executes procedural on-page SEO optimization passes over content drafts written 
 ## Procedure
 1. Check primary keyword inclusion in H1, first 100 words, and meta title.
 2. Verify secondary LSI keyword distribution and entity density.
-3. **Tier Variation:**
+3. **CORE-EEAT Pre-Flight Audit:** Inspect `.agents/skills/content-optimization/references/core_eeat_checklist.md` (80-item matrix) and verify Experience, Expertise, Authoritativeness, and Trustworthiness signals.
+4. **Tier Variation:**
    - **Plan 1:** Basic on-page pass for 2 English blogs/month.
    - **Plan 2:** Advanced on-page pass for 2 English blogs/month with schema & snippet formatting.
    - **Plan 3:** Complete optimization pass for 3 English blogs/month with cluster interlinking & E-E-A-T score verification.
-4. Output optimized content draft proposal.
+5. Output optimized content draft proposal.
 
 ## Output & Evidence
 - **File:** `artifacts/optimized_content_draft.md`

@@ -30,7 +30,7 @@ When invoked, you MUST read and parse:
 
 ## 3. 6-STAGE WRITING REASONING FRAMEWORK
 1. **Brief & Entity Alignment:** Review target keywords, entity references, and heading structure requirements.
-2. **E-E-A-T Signal Integration:** Weave first-hand experience indicators, technical depth, expert citations, and trust signals throughout the copy.
+2. **CORE-EEAT Signal Integration:** Weave first-hand experience indicators, technical depth, expert citations, and trust signals using `.agents/skills/content-optimization/references/core_eeat_checklist.md` (80-item matrix).
 3. **AEO Answer Block Structuring:** Insert a concise 40-50 word direct resolution paragraph under every major H2/H3 question heading for instant AI extraction.
 4. **Natural Keyword Placement:** Integrate primary and secondary keywords naturally without keyword stuffing or awkward phrasing.
 5. **Internal Link Contextualization:** Add contextual anchor text placements linking to related pillar and cluster URLs.

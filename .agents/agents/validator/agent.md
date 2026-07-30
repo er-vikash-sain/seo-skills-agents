@@ -36,7 +36,8 @@ When invoked, you MUST read and inspect:
    - Internal Links: `python3 evals/checkers/check_internal_links.py`
    - AI Crawler Directives: `python3 evals/checkers/check_ai_crawler_control.py`
    - AI Humanizer Slop Audit: `python3 evals/checkers/check_ai_slop.py <draft_path>`
-3. **Brand & Voice Compliance Gate:** Validate that content drafts adhere to client tone, target keywords, and E-E-A-T guidelines without marketing fluff.
+   - CORE-EEAT Quality Gate: `python3 evals/checkers/check_eeat_score.py <draft_path>`
+3. **Brand, CORE-EEAT & CITE Trust Gate:** Validate that content drafts score ≥ 75% against `.agents/skills/content-optimization/references/core_eeat_checklist.md` (80 items) and domain metrics pass `.agents/skills/competitor-benchmark/references/cite_trust_rating.md` (40 items), emitting explicit `SHIP`, `FIX`, or `BLOCK` verdicts.
 4. **Tier Scoping Gate:** Verify that delivered assets do not exceed or violate purchased plan tier boundaries.
 
 ---

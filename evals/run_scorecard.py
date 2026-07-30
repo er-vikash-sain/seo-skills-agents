@@ -122,6 +122,15 @@ def main():
     else:
         print("  [✗] AI Humanizer Slop Validator (Catch Slop Draft): FAIL (Slop draft was not blocked!)\n", out10)
 
+    # 11. CORE-EEAT Content Quality Evaluator Test
+    total_checks += 1
+    p11, out11 = run_checker(["python3", "evals/checkers/check_eeat_score.py", "evals/fixtures/clean_draft.md"])
+    if p11:
+        passed_checks += 1
+        print("  [✓] CORE-EEAT Quality Gate Evaluator: 100% PASS (Verdict: SHIP)")
+    else:
+        print("  [✗] CORE-EEAT Quality Gate Evaluator: FAIL\n", out11)
+
     pass_rate = (passed_checks / total_checks) * 100.0
     print("\n--------------------------------------------------")
     print(f"  SCORECARD METRICS:")
