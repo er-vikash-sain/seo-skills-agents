@@ -7,19 +7,20 @@ version: "1.0.0"
 # Instructions
 
 ## Role
-Performs mechanical keyword ranking data collection, calculates rank position shifts, and aggregates search position history across SERPs.
+Performs keyword ranking data collection, Performance Drift Baseline tracking, position delta calculations, and search position history aggregation across SERPs.
 
 ## Inputs
 - `client_package_tier`: Plan 1 (20 terms), Plan 2 (50 terms), Plan 3 (Unlimited / Full keyword universe tracking).
-- Target keyword list and domain URL.
+- Target keyword list, baseline snapshot file, and domain URL.
 
 ## Procedure
 1. Pull search engine rank position data for configured target keywords.
-2. Calculate position deltas (gain/loss), top 3/10/30 visibility ratios, and SERP feature presence.
-3. **Tier Variation:**
+2. Compare current ranking/visibility metrics against historical baseline snapshots (Performance Drift Audit) to detect early rank drops or cannibalization.
+3. Calculate position deltas (gain/loss), top 3/10/30 visibility ratios, and SERP feature presence.
+4. **Tier Variation:**
    - **Plan 1:** Track 20 primary keywords monthly.
-   - **Plan 2:** Track 50 target keywords bi-weekly.
-   - **Plan 3:** Track Unlimited / full keyword universe weekly with volatility alert logs.
+   - **Plan 2:** Track 50 target keywords bi-weekly with baseline drift checks.
+   - **Plan 3:** Track Unlimited / full keyword universe weekly with automated drift alerts & volatility logs.
 4. Output Keyword Rank Tracking Log.
 
 ## Output & Evidence
